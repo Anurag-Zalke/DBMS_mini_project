@@ -1,0 +1,53 @@
+create database dbmsproject;
+
+create table department(
+    department_id varchar(5) primary key ,
+    department_name varchar(40) NOT null ,
+    head_id varchar(5) NOT null
+)
+
+create table student_info(
+    roll_number varchar(10) PRIMARY key,
+    first_name varchar(20) not null,
+    middle_name varchar(20),
+    last_name varchar(20) not null,
+    mobile_number int(10) not null,
+    admission_year int(4) not null,
+    email varchar (20) not null,
+    date_of_birth date not null,
+    semester int(2) not null check (1<=semester<=8),
+    cgpa decimal(3,2) not null check (0<=cgpa<=10),
+    department_id varchar(5) not null,
+    FOREIGN key (department_id) REFERENCES department(department_id)
+)
+
+create table instructor(
+    instructor_id varchar(8) not null primary key,
+    instructor_first_name varchar(20) not null,
+    instructor_last_name varchar(20) not null,
+    mobile_number int(10) not null,
+    email varchar(20) not null,
+    department_id varchar(5) not null,
+    FOREIGN key (department_id) REFERENCES department(department_id)
+)
+
+
+create table course(
+    course_id varchar(8) PRIMARY key ,
+    course_name varchar(20) not null,
+    instructor_id varchar(20) not null,
+    FOREIGN KEY (instructor_id) REFERENCES instructor(instructor_id),
+    semester int(8) not null check(0<=semester<=8)
+    
+)
+
+create table mark(
+    roll_number varchar(10) not null,
+    course_id varchar (8) not null,
+    midsem_mark int(2) ,
+    endsem_mark int(2) ,
+    total_mark int(3) ,
+    grade varchar(3) ,
+    CONSTRAINT PK_mark PRIMARY KEY (roll_number,course_id)
+    
+)
