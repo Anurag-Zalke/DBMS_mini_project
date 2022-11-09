@@ -13,6 +13,7 @@ if (isset($_SESSION['roll_number']) && isset($_SESSION['mobile_number'])) {
         <style>
         </style>
         <link rel="stylesheet" type="text/css" href="style_retrieve.css">
+        <link rel="stylesheet" href="student.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body >
@@ -20,7 +21,7 @@ if (isset($_SESSION['roll_number']) && isset($_SESSION['mobile_number'])) {
 
 
         <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
+            <div class="container-fluid">&emsp;
             <a class="navbar-brand" >Student Login</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,38 +30,32 @@ if (isset($_SESSION['roll_number']) && isset($_SESSION['mobile_number'])) {
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
-                </li>
+                </li>&emsp;
                 <li class="nav-item">
-                    <a class="nav-link active"  href="#">About us</a>
-                </li>
+                    <a class="nav-link active"  href="aboutus.html">About us</a>
+                </li>&emsp;
                 <li class="nav-item dropdown ">
-                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Login
-                    </a>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="student_login_form.php">Student</a></li>
-                    <li><a class="dropdown-item" href="instructor_login_form.php">Instructor</a></li>
-                    <li><a class="dropdown-item" href="#">Admin</a></li>
-                    </ul>
-                </li>
+                <button type="button" class="btn dropdown-toggle" style="background-color:#C9B6F2 ;" data-bs-toggle="dropdown">Login</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="student_login_form.php">Student</a></li>
+                  <li><a class="dropdown-item" href="Instructor_login_form.php">Instructor</a></li>
+                  <li><a class="dropdown-item" href="admin_login_form.php">Admin</a></li>
+                </ul>
+                </li>&emsp;
                 <li class="nav-item">
-                    <a class="nav-link disabled">Notice Board</a>
+                    <a class="nav-link active" href="notice.html">Notice Board</a>
                 </li>
                 </ul>
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
             </div>
         </nav>
-
-
-        <h1>Hello, <?php echo $_SESSION['roll_number']; ?></h1>
-        
-
+        <h5 class="wel">  Welcome, <?php echo $_SESSION['roll_number']; ?></h5>
+        <section id="ABC">
+            <div class="back"><b>PROGRESS REPORT</b></div>
+            <!-- <h1><center>Welcome, <?php echo $_SESSION['roll_number']; ?></center></h1> -->
+        </section>
+        <div class=info>
         <?php
-
         $roll_number=$_SESSION['roll_number'];
         $sql = "SELECT * FROM student_info WHERE roll_number='$roll_number' ";
 		$result = mysqli_query($conn, $sql);
@@ -77,16 +72,17 @@ if (isset($_SESSION['roll_number']) && isset($_SESSION['mobile_number'])) {
         $department_id=$row['department_id'];
 
         ?>
-        <h1>Hello, <?php echo $f_name ; ?></h1>
-        <h1> <?php echo $l_name; ?></h1>
-        <h3> <?php echo $mobile; ?></h3>
-        <h3><?php echo $year; ?></h3>
-        <h3><?php echo $email; ?></h3>
-        <h3><?php echo $DOB; ?></h3>
-        <h3> <?php echo $semester; ?></h3>
-        <h3> <?php echo $cgpa; ?></h3>
-        <h3> <?php echo $department_id; ?></h3>
 
+        <h5>NAME - <?php echo $f_name ; ?> <?php echo $l_name; ?></h5>
+        <!-- <h1> <?php echo $l_name; ?></h1> -->
+        <h5 class="mob">MOBILE- <?php echo $mobile; ?></h5>
+        <h5>EMAIL - <?php echo $email; ?></h5>
+        <h5 class="dob">DOB - <?php echo $DOB; ?></h5>
+        <h5>YEAR - <?php echo $year; ?></h5>
+        <h5 class="sem">SEMESTER - <?php echo $semester; ?></h5>
+        <h5>CGPA - <?php echo $cgpa; ?></h5>
+        <h5 class="dep">DEPARTMENT - <?php echo $department_id; ?></h5>
+</div>
 
     <?php
 
@@ -98,14 +94,15 @@ if (isset($_SESSION['roll_number']) && isset($_SESSION['mobile_number'])) {
         if (mysqli_num_rows($result1) > 0) {
         ?>
         <table>
-        <thead class="thead-dark" style="background-color: black; color: white;">
+            <thead class="thead-dark">
+        <!-- <thead class="thead-dark" style="background-color: black; color: white;"> -->
         <tr>
-            <td>Roll No.</td>
-            <td>Course_id</td>
-            <td>Midsem</td>
-            <td>Endsem</td>
-            <td>Total</td>
-            <td>Grade</td>
+            <td><b>Roll No.</td>
+            <td><b>Course_id</td>
+            <td><b>Midsem</td>
+            <td><b>Endsem</td>
+            <td><b>Total</td>
+            <td><b>Grade</td>
 
         </tr>
         </thead>
@@ -143,7 +140,7 @@ if (isset($_SESSION['roll_number']) && isset($_SESSION['mobile_number'])) {
 
         ?>
 
-        <br><a href="logout.php">Logout</a>
+        <br><a href="logout.php"><button class="add">Logout</button></a>
 
     </body>
 </html>

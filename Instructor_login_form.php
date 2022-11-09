@@ -1,66 +1,68 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Instructor Login</title>
-        <style>
-        </style>
-        <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    </head>
-    <body >
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Instructor Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-            <a class="navbar-brand" >Instructor Login</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active"  href="#">About us</a>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Login
-                    </a>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="student_login_form.php">Student</a></li>
-                    <li><a class="dropdown-item" href="Instructor_login_form.php">Instructor</a></li>
-                    <li><a class="dropdown-item" href="#">Admin</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Notice Board</a>
-                </li>
-                </ul>
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-            </div>
-        </nav>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
 
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login for Instructor</h2>
+                    <?php if (isset($_GET['error'])) { ?>
+                        <p class="error"><?php echo $_GET['error']; ?></p>
+                    <?php } ?>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-7 col-lg-5">
+					<div class="login-wrap p-4 p-md-5">
+                    <div class="icon d-flex align-items-center justify-content-center" style="background-color: #B79BF2;">
+		      		<span class="fa fa-user-o" style="background-color: #B79BF2;"></span>
+		      	</div>
+		      	<h3 class="text-center mb-4">Sign In</h3>
+						<form action="Instructor_login.php" method="post" class="login-form">
+		      		<div class="form-group">
+		      			<input type="text" name="e_id" class="form-control rounded-left" placeholder="Instructor ID" required>
+		      		</div>
+	            <div class="form-group d-flex">
+	              <input type="text"   name="mobile" class="form-control rounded-left" placeholder="Mobile Number" required>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn rounded submit px-3" style="background-color: #B79BF2;">Login</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+	            		<label class="checkbox-wrap checkbox-primary">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="homepage.html">Homepage</a>
+								</div>
+	            </div>
+	          </form>
+	        </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        <form action="Instructor_login.php" method="post">
-            <h2>LOGIN</h2>
-            <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-            <label>Instructor ID</label>
-            <input type="text" name="e_id" placeholder="Instructor ID"><br>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 
-            <label>Mobile Number</label>
-            <input type="text" name="mobile" placeholder="Mobile Number"><br>
-
-            <button type="submit">Login</button>
-        </form>
-        
-    </body>
+	</body>
 </html>
+

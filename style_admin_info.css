@@ -1,0 +1,17 @@
+.c1 {
+    border: 1px solid rgb(74, 71, 82);
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: rgb(215, 15, 15);
+    border-radius: 10px;
+}
+.c2 {
+    border: 1px solid rgb(115, 93, 186);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.c3 {
+    font-style: italic;
+    color: #B79BF2;
+    border-radius: 10px;
+}

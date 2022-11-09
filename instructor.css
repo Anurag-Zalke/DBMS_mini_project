@@ -1,0 +1,77 @@
+#ABD {
+    background-color:#C9B6F2;
+    /* border: 1px solid red; */
+    height:75px;
+    width:95%;
+    /* position: relative; */
+    text-align: center;
+    margin-left:37px;
+    margin-right: 60px;
+    padding:1.5rem;
+    border: 1px solid black;
+    
+}
+/*table,th,td{
+    /* border-radius: 10px; 
+    border: 1px solid black;
+  border-radius: 20px;
+  border-collapse: collapse;
+} */
+table{
+    /* border-radius: 5px; */
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-radius:10px;
+}
+.ins{
+    margin-left:37px;
+    width:95%;
+    background-color:#C9B6F2;
+    border: 1px solid black;
+    height:40px;
+   
+}
+/* #pop {
+    background-color:#C9B6F2;
+    /* border: 1px solid red; 
+    height:50px;
+    width:95%;
+    /* position: relative;
+    text-align: center;
+    margin-left:37px;
+    margin-right: 60px;
+    padding:1.5rem;
+} */
+/* button{
+    border:none;
+    outline:none;
+    padding:8px 20px;
+    margin:5px 30px 0 50px;
+    color:white;
+    cursor:pointer;
+    border-radius: 16px;
+    position:relative;
+} */
+.add1{
+    background:#B79BF2;
+    border-radius: 16px;
+    /* justify-content: center; */
+    margin-left:160px;
+    margin-top:20px;
+}
+button.add1:hover{
+    background-color: darkgray;
+}
+button.add:hover{
+    background-color: darkgray;
+}
+.lola{
+    margin-left:37px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.pul{
+    margin-left:37px;
+}
+button .kel:hover{
+    background-color: darkgray;
+}

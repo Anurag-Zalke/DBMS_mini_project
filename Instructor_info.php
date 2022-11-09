@@ -13,6 +13,8 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
         <style>
         </style>
         <link rel="stylesheet" type="text/css" href="style_retrieve.css">
+        <link rel="stylesheet" href="student.css" />
+        <link rel="stylesheet" href="instructor.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body >
@@ -20,8 +22,8 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
 
 
         <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-            <a class="navbar-brand" >Instructor Login</a>
+            <div class="container-fluid">&emsp;
+            <a class="navbar-brand" >Instructor Info</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,36 +31,30 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
-                </li>
+                </li>&emsp;
                 <li class="nav-item">
-                    <a class="nav-link active"  href="#">About us</a>
-                </li>
+                    <a class="nav-link active"  href="aboutus.html">About us</a>
+                </li>&emsp;
                 <li class="nav-item dropdown ">
-                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Login
-                    </a>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="student_login_form.php">Student</a></li>
-                    <li><a class="dropdown-item" href="Instructor_login_form.php">Instructor</a></li>
-                    <li><a class="dropdown-item" href="#">Admin</a></li>
-                    </ul>
-                </li>
+                <button type="button" class="btn dropdown-toggle" style="background-color:#C9B6F2 ;" data-bs-toggle="dropdown">Login</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="student_login_form.php">Student</a></li>
+                  <li><a class="dropdown-item" href="Instructor_login_form.php">Instructor</a></li>
+                  <li><a class="dropdown-item" href="admin_login_form.php">Admin</a></li>
+                </ul>
+                </li>&emsp;
                 <li class="nav-item">
-                    <a class="nav-link disabled">Notice Board</a>
+                    <a class="nav-link active" href="notice.html">Notice Board</a>
                 </li>
                 </ul>
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
             </div>
         </nav>
 
-
-        <h1>Hello, <?php echo $_SESSION['instructor_name']; ?></h1>
-        
-
+        <section id="ABD">
+        <h3 class="wel">WELCOME, <?php echo $_SESSION['instructor_name']; ?></h3>
+</section>
+    <div class=info>
         <?php
 
         $instructor_id=$_SESSION['instructor_id'];
@@ -71,14 +67,13 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
         $email=$row['email'];
         $department_id=$row['department_id'];
         ?>
-
-        <h3> <?php echo $f_name; ?></h3>
-        <h3> <?php echo $l_name; ?></h3>
-        <h3> <?php echo $mobile; ?></h3>
-        <h3> <?php echo $email; ?></h3>
-        <h3> <?php echo $department_id; ?></h3>
-
-        
+        <h5>NAME - <?php echo $f_name ; ?> <?php echo $l_name; ?></h5>
+        <!-- <h3> <?php echo $f_name; ?></h3>
+        <h3> <?php echo $l_name; ?></h3> -->
+        <h5 class="mob">MOBILE NUMBER -  <?php echo $mobile; ?></h3>
+        <h5>EMAIL -  <?php echo $email; ?></h3>
+        <h5 class="dep">DEPARTMENT -  <?php echo $department_id; ?></h3>
+</div>        
         <?php
 
         $sql1 = "SELECT * FROM course WHERE instructor_id='$instructor_id' ";
@@ -88,12 +83,10 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
         if (mysqli_num_rows($result1) > 0) {
         ?>
         <table>
-        <thead class="thead-dark" style="background-color: black; color: white;">
+        <thead class="thead-dark">
         <tr>
-            <td>instructor_id</td>
-            <td>Course_id</td>
-            <td>Course_name</td>
-
+            <td><b>Instructor_id</td>
+            <td ><b>Course_id</td>
         </tr>
         </thead>
         <?php
@@ -103,7 +96,6 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
         <tr>
             <td><?php echo $row["instructor_id"]; ?></td>
             <td><?php echo $row["course_id"]; ?></td>
-            <td><?php echo $row["course_name"]; ?></td>
         </tr>
         <?php
         $i++;
@@ -120,13 +112,20 @@ if (isset($_SESSION['instructor_id']) && isset($_SESSION['mobile_number'])) {
 
         ?>
         <form action="Instructor_mark_view.php" method="post">
-            <h2>Enter course id to view</h2>
-            <label>Course ID</label>
+                <br>
+                <br>
+                <div class="ins">
+            <h3 >Enter Course id to view the details</h3>
+            </div>
+            <br>
+            <div class="lola">
+            <label>COURSE ID</label>
             <input type="text" name="course_id" placeholder="course ID" ><br>
-
-            <button type="submit">View</button>
+    </div>
+            <button type="submit" class="add1">View</button>
+    
         </form>
-        <br><a href="logout.php">Logout</a>
+        <br><a href="logout.php"><button class="add">Logout</button></a>
 
     </body>
 </html>

@@ -11,7 +11,7 @@ create table student_info(
     first_name varchar(20) not null,
     middle_name varchar(20),
     last_name varchar(20) not null,
-    mobile_number int(10) not null,
+    mobile_number bigint(10) not null,
     admission_year int(4) not null,
     email varchar (20) not null,
     date_of_birth date not null,
@@ -31,14 +31,17 @@ create table instructor(
     FOREIGN key (department_id) REFERENCES department(department_id)
 )
 
-
-create table course(
+create table course_details(
     course_id varchar(8) PRIMARY key ,
     course_name varchar(20) not null,
-    instructor_id varchar(20) not null,
-    FOREIGN KEY (instructor_id) REFERENCES instructor(instructor_id),
     semester int(8) not null check(0<=semester<=8)
-    
+)
+
+create table course(
+    course_id varchar(8) not null,
+    FOREIGN KEY (course_id) REFERENCES course_details(course_id),
+    instructor_id varchar(20) not null,
+    FOREIGN KEY (instructor_id) REFERENCES instructor(instructor_id)
 )
 
 create table mark(
@@ -50,4 +53,11 @@ create table mark(
     grade varchar(3) ,
     CONSTRAINT PK_mark PRIMARY KEY (roll_number,course_id)
     
+)
+
+
+create table admin_(
+    admin_id varchar(8) PRIMARY key ,
+    admin_name varchar(40) not null,
+    admin_password varchar(20) not null  
 )

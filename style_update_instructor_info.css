@@ -1,0 +1,11 @@
+.c1 {
+    border: 1px solid rgb(85, 81, 98);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.c2 {
+    /* border: 1px solid rgb(85, 81, 98); */
+    border-radius: 10px;
+    padding: 1rem;
+    color: rgb(79, 154, 108);
+}

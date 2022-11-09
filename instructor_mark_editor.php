@@ -14,6 +14,7 @@ if (isset($_POST['s_id']) ){
         <style>
         </style>
         <link rel="stylesheet" type="text/css" href="style_retrieve.css">
+        <link rel="stylesheet" type="text/css" href="inmark.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body >
@@ -29,38 +30,37 @@ if (isset($_POST['s_id']) ){
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active"  href="#">About us</a>
-                </li>
-                <li class="nav-item dropdown ">
-                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Login
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link active"  href="aboutus.html">About us</a>
+                    </li>&emsp;
+                    <li class="nav-item dropdown ">
+                    <button type="button" class="btn dropdown-toggle" style="background-color:#C9B6F2 ;" data-bs-toggle="dropdown">Login</button>
                     <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="student_login_form.php">Student</a></li>
-                    <li><a class="dropdown-item" href="Instructor_login_form.php">Instrustor</a></li>
-                    <li><a class="dropdown-item" href="#">Admin</a></li>
+                    <li><a class="dropdown-item" href="Instructor_login_form.php">Instructor</a></li>
+                    <li><a class="dropdown-item" href="admin_login_form.php">Admin</a></li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Notice Board</a>
-                </li>
-                </ul>
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                    </li>&emsp;
+                    <li class="nav-item">
+                        <a class="nav-link active" href="notice.html">Notice Board</a>
+                    </li>
+                    </ul>
             </div>
             </div>
         </nav>
-
-        <h1>Hello, <?php echo $_SESSION['instructor_name']; ?></h1>
-        <h1>selected course  <?php echo $_SESSION['course_id']; ?></h1>
-        <h1>Chang marks of Student Id <?php echo $_POST['s_id']; ?></h1>
-
+        &emsp;
+        <div class="content">
+        <h1><?php echo $_SESSION['instructor_name']; ?></h1>
+</div>
+&emsp;
+<div class="select">
+        <h4>Selected course  <?php echo $_SESSION['course_id']; ?></h4>
+        <h4>Change marks of Student Id <?php echo $_POST['s_id']; ?></h4>
+        </div>
+        &emsp;
         <?php
 
         // $instructor_id=$_POST['instructor_id'];
@@ -81,8 +81,9 @@ if (isset($_POST['s_id']) ){
 
         if (mysqli_num_rows($result1) > 0) {
         ?>
+        <div class="entry">
         <table> 
-        <thead class="thead-dark" style="background-color: black; color: white;">
+        <thead class="thead-dark" style="background-color: #c9b6f2; margin-left:37px;color: black; border-color:black; ">
         <td>Roll No.</td>
             <td>Course_id</td>
             <td>Midsem</td>
@@ -92,6 +93,7 @@ if (isset($_POST['s_id']) ){
 
         </tr>
         </thead>
+        
         <?php
         $i=0;
         while($row = mysqli_fetch_array($result1)) {
@@ -110,22 +112,34 @@ if (isset($_POST['s_id']) ){
         }
         ?>
         </table>
-
-        <div class="sticky" style="padding: 10px;font-size: 10px;background-color:  rgb(103, 155, 145);">
+        </div>
+        &emsp;
+        <div class="sticky" style="padding: 10px;font-size: 10px;background-color:#c9b6f2  ;">
             <form action="mark_editor.php" method="post">
-                <h2>Enter Student marks</h2><br>
-                <label style="font-size:18px;" >Student_Id</label>&emsp;
+                <h2>Enter Student Marks</h2><br>
+                <div class="studid">
+                <label style="font-size:20px;" >Student_Id</label>&emsp;&emsp;&emsp;
                 <input type="text" name="s_id" placeholder="mark" style="font-size:12px;" value="<?php echo $s_id; ?>"><br>
-                <label style="font-size:18px;" >midsem marks</label>&emsp;
+                </div>
+                <div class="midmark">
+                <label style="font-size:18px;" >Midsem Marks</label>&emsp;
                 <input type="text" name="midsem" placeholder="mark" style="font-size:12px;" value="<?php echo $midsem; ?>"><br>
-                <label style="font-size:18px;" >endsem marks</label>&emsp;
+                </div>
+                <div class="endmark">
+                <label style="font-size:18px;" >Endsem Marks</label>&emsp;
                 <input type="text" name="endsem" placeholder="mark" style="font-size:12px;" value="<?php echo $endsem; ?>"><br>
-                <label style="font-size:18px;" >total marks</label>&emsp;
+                </div> 
+                <div class="totalmark">
+                <label style="font-size:18px;" >Total Marks</label>&emsp;&emsp;&emsp;&emsp;
                 <input type="text" name="total" placeholder="mark" style="font-size:12px;" value="<?php echo $total; ?>"><br>
-                <label style="font-size:18px;" >final Grade</label>&emsp;
-                <input type="text" name="grade" placeholder="mark" style="font-size:12px;" value="<?php echo $grade; ?>"><br>
-
-                <button type="submit" name="submit" style="font-size:11px;">Edit</button>
+                 </div>
+                 <div class="grade">
+                <label style="font-size:18px;" >Final Grade</label>&emsp;&emsp;&emsp;
+                <input type="text" name="grade" placeholder="grade" style="font-size:12px;" value="<?php echo $grade; ?>"><br>
+                </div>
+                
+                <button type="submit" class="button" name="submit" style="font-size:15px;">Edit</button>
+                
             </form>
         </div>
 
@@ -139,9 +153,11 @@ if (isset($_POST['s_id']) ){
         ?>
 
         
-
-        <br><a href="logout.php">Logout</a>
-
+        
+        <br><a href="logout.php">
+            <button class="log">Logout</button>
+        </a>
+    
     </body>
 </html>
 
